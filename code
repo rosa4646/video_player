@@ -1,0 +1,30 @@
+from tkinter import *
+import tkvideo
+import os
+
+root = Tk()
+w = Label(root, text="Video Player 3000")
+
+myList = os.listdir(r"D:\videos")
+
+list_box = Listbox(root)
+
+for file in myList:
+    list_box.insert(END, file)
+list_box.pack()
+
+def video_func():
+    video_player = tkvideo(
+        #video,
+        w,
+        loop = 1,
+        size = (700, 500)
+    )
+
+def app_lost_focus(self, event):
+    if self.focus_get() != self.menu:
+        self.destroy_menu(event)
+        self.destroy
+
+w.pack()
+root.mainloop()
