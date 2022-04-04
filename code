@@ -6,7 +6,7 @@ import os
 
 root = Tk()
 w = Label(root, text="video player :)")
-root.geometry("100x100")
+root.geometry("500x500")
 
 var = tk.StringVar()
 
@@ -16,26 +16,44 @@ for file in mp4_list:
     listbox.insert(END, file)
 listbox.pack()
 
-video_player = tkvideo(root, 
-            w,
-            loop = 1,
-            size = (700, 500)
-)
-
 def submit():
     global video_name
+    global path
     video_name = var.get()
     var.set("")
-    video_player_func()
     print(video_name)
-
-def video_player_func():
+    path = "D:\\videos\\" + video_name  
+    print(path)
+    video_player = tkvideo(path, 
+            w,
+            loop = 1,
+            size = (200, 200)
+    )
     video_player.play()
+
 
 entry = tk.Entry(root, textvariable=var)
 entry.pack()
 btn = tk.Button(root, text="Play", 
                     command=submit)
+
+
+focus = 0
+
+def focus_in(event):
+    global focus
+    focus += 1
+
+def focus_out(event):
+    global focus
+    focus -= 1
+    if focus == 0:
+        root.destroy()
+        w.destroy()
+        listbox.destroy()
+
+root.bind("<FocusIn>", focus_in)
+root.bind("<FocusOut>", focus_out)
 
 btn.pack()
 w.pack()
