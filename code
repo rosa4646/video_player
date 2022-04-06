@@ -62,26 +62,3 @@ btn.pack()
 w.pack()
 root.mainloop()
 entry.pack()
-btn = tk.Button(root, text="Play", 
-                    command=submit)
-
-focus = 0
-
-def focus_in(event):
-    global focus
-    focus += 1
-
-def focus_out(event):
-    global focus
-    focus -= 1
-    if focus == 0:
-        root.destroy()
-        w.destroy()
-        listbox.destroy()
-
-root.bind("<FocusIn>", focus_in)
-root.bind("<FocusOut>", focus_out)
-
-btn.pack()
-w.pack()
-root.mainloop()
