@@ -18,7 +18,7 @@ for file in mp4_list:
     listbox.insert(END, file)
 listbox.pack()
 
-#function for extracting the video name and playong it
+#function for extracting the video name and playing it
 def submit():
     global video_name
     global path
